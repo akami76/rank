@@ -70,7 +70,11 @@ public class NaverRealRank extends Rank{
     public static void main(String args[]){
         NaverRealRank naverRealRank = new NaverRealRank();
 
-        naverRealRank.setRankList();
-        System.out.println(naverRealRank.rankList);
+         naverRealRank.setRankList();
+
+        ArrayList<Word> list = naverRealRank.rankList;
+
+        for(Word word : list)
+        System.out.println(word);
     }
 }
