@@ -8,8 +8,9 @@ import java.util.List;
 public interface NewsRepository extends CrudRepository<News, Integer> {
 
     @Query(value="SELECT max(dummy) max_dumy FROM TB_NEWS", nativeQuery = true)
-    public List<Object[]> findByMaxSeqQuery(String empNm);
+    public Long findByMaxSeqQuery(String empNm);
 
-    public void delete
+    @Query(value="delete FROM TB_NEWS where dummy <= ?1", nativeQuery = true)
+    public void deleteOldimage(long index);
 
 }

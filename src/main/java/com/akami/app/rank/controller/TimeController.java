@@ -19,4 +19,9 @@ public class TimeController {
         return timeMapper.getTime();
     }
 
+    @RequestMapping("/info")
+    public String info(){
+        return "info";
+    }
+
 }

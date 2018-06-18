@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -42,6 +43,7 @@ public class NaverRank extends Rank {
     NewsRepository newsRepository;
 
     @Override
+    @Transactional
     @Scheduled(initialDelay = 6000, fixedDelay = 60000)
     public void setRankList() {
         Document rankWords = getDocument(rankSearchUrl, null);
@@ -56,7 +58,9 @@ public class NaverRank extends Rank {
         String relationWord ;
         Word word ;
 
-
+        //기준 시간 잡기
+        Timestamp now =  timeMapper.getTime();
+        System.out.println("now ==============="+now.toString());
         newsRepository.deleteAll();
         imageRepository.deleteAll();
         //STEP 1. 실시간 검색어 담기
@@ -131,6 +135,10 @@ public class NaverRank extends Rank {
             //System.out.println(images);
 
             Image image;
+            if(images.size()  > 0 && rankindex ==1 ){
+                //기존 이미지 삭제
+                imageRepository.deleteAll();
+            }
 
             for(int i = 0 ; i < IMAGE_CNT ; i++){
                 image = new Image();
@@ -148,6 +156,8 @@ public class NaverRank extends Rank {
 
 
 
+
+
             rankindex++;
 
 
@@ -155,7 +165,7 @@ public class NaverRank extends Rank {
             if(rankindex  == 21) break;
         }
 
-        System.out.println("now ==============="+timeMapper.getTime());
+
         //for(Word word2 : rankList) {
         //    System.out.println(word2);
         //}

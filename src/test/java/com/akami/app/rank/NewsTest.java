@@ -58,7 +58,7 @@ public class NewsTest extends Rank {
             news.setKeyword(keyword);
             news.setPortal("NAVER");
             news.setRankIndex(1);
-            news.setThumbnail(items.get(i).select("media:thumbnail").attr("url"));
+            news.setThumbnail(items.get(i).select("media").attr("url"));
             news.setCategory(items.get(i).select("category").text());
             news.setRegDate(new Timestamp(System.currentTimeMillis()));
             System.out.println(news.toString());
