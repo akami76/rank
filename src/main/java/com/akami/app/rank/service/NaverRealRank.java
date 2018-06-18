@@ -17,14 +17,12 @@ public class NaverRealRank extends Rank{
     private String realationSearchUrl = "https://search.naver.com/search.naver?query=";
     private final static String TYPE = "N0R0";
     private ArrayList<String> realationWord ;
-    @Override
-    public void setRankSearchUrl(String rankSearchUrl) {
-        this.rankSearchUrl = rankSearchUrl;
-    }
+
+
 
     @Override
     public void setRankList() {
-        Document rankWords = getDocument(rankSearchUrl);
+        Document rankWords = getDocument(rankSearchUrl, null);
 
         //System.out.println(rankWords);
         Elements elements = rankWords.select("span.ah_k");
@@ -36,10 +34,9 @@ public class NaverRealRank extends Rank{
             //System.out.println(rankindex +" : "+ e.html());
             //실시간 검색어 담기
             keyword = e.html();
-            try {
                 //연관검색어 주어담기
                 realationWord = new ArrayList<String>();
-                rankWords = getDocument(realationSearchUrl+URLEncoder.encode(keyword, java.nio.charset.StandardCharsets.UTF_8.toString()));
+                rankWords = getDocument(realationSearchUrl, keyword);
                 Elements reEl = rankWords.select("ul._related_keyword_ul > li");
 
                 for (Element re : reEl) {
@@ -48,12 +45,10 @@ public class NaverRealRank extends Rank{
                     realationWord.add(relationWord);
                 }
 
-                rankList.add(new Word(TYPE, rankindex, keyword, realationWord));
+                rankList.add(new Word(TYPE, rankindex, keyword, realationWord.toString()));
 
 
-            } catch (UnsupportedEncodingException e1) {
-                e1.printStackTrace();
-            }
+
 
 
             rankindex++;
