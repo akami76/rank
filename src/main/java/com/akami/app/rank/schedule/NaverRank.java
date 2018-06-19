@@ -44,7 +44,7 @@ public class NaverRank extends Rank {
 
     @Override
     @Transactional
-    @Scheduled(initialDelay = 6000, fixedDelay = 60000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 60000)
     public void setRankList() {
         Document rankWords = getDocument(rankSearchUrl, null);
 
@@ -176,7 +176,7 @@ public class NaverRank extends Rank {
 
 
 
-    @Scheduled(initialDelay = 6000, fixedDelay = 20000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 60000)
     public void sayHello(){
         System.out.println("say Hello : "+timeMapper.getTime());
     }
