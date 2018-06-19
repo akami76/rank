@@ -1,10 +1,7 @@
 package com.akami.app.rank.controller;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.templatemode.TemplateMode;
 
 @RestController
 public class JspViewTestController {
@@ -19,8 +16,10 @@ public class JspViewTestController {
     }
 
     @RequestMapping("/rank")
-    public String info(){
-        return "rank0.9";
+    public String rank(){
+        return "rank";
     }
+
+
 
 }
