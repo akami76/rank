@@ -34,12 +34,11 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <style>
 #cloud {
 width: 100%;
-height: 150px;
+height: 50px;
 }
 
 .news_box {
@@ -62,12 +61,14 @@ height: 150px;
   margin-bottom: 1px;
   padding: 0 1rem;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .news_description{
   border-radius: 3px;
   background-color: #FFFFFF;
   padding: 0 1rem;
+  font-size: 12px;
 }
 
 .news_author{
@@ -76,16 +77,21 @@ height: 150px;
   box-shadow: 0 1px 2px 3px rgba(0, 0, 0, 0.1);
   padding: 0 0.5em;
 }
+
+.keyword{
+  border-radius: 5px;
+  font-size: 18px;
+  height: 30px;
+}
 </style>
 
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="box-header with-border bg-green-gradient">
+  <header class="box-header with-border bg-blue-gradient">
     <!-- Logo -->
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>왜, 떴지?!</b></span>
-      <span class="box-header with-border bg-gray-light"><b>Naver</b></span>
   </header>
 
 
@@ -101,14 +107,11 @@ height: 150px;
     </section>-->
 
     <!-- Main content -->
-    <section class="content">
-      <div class="box box-solid">
+    <section class="content" style="background-color: #ffffff">
       <!--  <div class="box-header with-border bg-green-gradient">
           <h3 class="box-title">Naver</h3>
         </div>-->
-        <div class="box-header with-border bg-gray-light">
-          <h3 class="box-title">1. 폴란드 세네갈</h3>
-        </div>
+       <div class="keyword bg-green-gradient">&nbsp; 1. 폴란드 세네갈</div>
         <!-- 연관검색어 -->
         <div id="cloud"></div>
         <!-- /.box-header -->
@@ -155,17 +158,9 @@ height: 150px;
         </div>
         <!-- /.box-body -->
 
-      </div>
 
-      <!-- Main row -->
-      <div class="row">
         <!-- Left col -->
-        <section >
           <!-- Custom tabs (Charts with tabs)-->
-         <!-- /.nav-tabs-custom -->
-
-          <!-- Chat box -->
-          <div class="box-body">
             <!-- Conversations are loaded here -->
             <div class="news_box">
               <!-- news -->
@@ -182,17 +177,19 @@ height: 150px;
               <!-- /news -->
               <div class="margin-bottom">
                 <div class="direct-chat-info clearfix">
-                  <span class="direct-chat-name pull-left">한국영농신문</span>
+                  <span class="news_author">한국영농신문</span>
                   <span class="direct-chat-timestamp pull-right">2018-06-20 00:48</span>
                 </div>
-                <div class="box box-success text-bold" style="margin-bottom: 5px;padding: 0 1rem">'득점왕' 레반도프스키, 골문 두드릴까… 득점률 57% 기록</div>
-                <div style="background-color: #FFFFFF;padding: 0 1rem">
+                <div class="new_title">'득점왕' 레반도프스키, 골문 두드릴까… 득점률 57% 기록</div>
+                <div class="news_description">
                   Y사진=레반도프스키 SNS 폴란드의 에이스 로베르트 레반도프스키에 대한 관심이 높다. 레반도프스키는 20일 오전 0시부터 진행된 세네갈과의 경기에 선발 출전됐다. 이날 경기에 앞서 레반도프스키는 자신의 SNS를...
                 </div>
               </div>
               <!-- /news -->
-
-
+            </div>
+    </section>
+  </div>
+</div>
 
 
 
@@ -226,7 +223,7 @@ height: 150px;
 
     $(document).ready(function() {
         var words = [
-            {text: "세네갈", weight: 1},
+            {text: "세네갈", weight: 1, link: 'https://m.search.naver.com/search.naver?query=세네갈'},
             {text: "폴란드 세네갈", weight: 1.1},
             {text: "레반도프스키", weight: 1},
             {text: "한국 세네갈", weight: 1.1},
@@ -239,7 +236,9 @@ height: 150px;
             /* ... */
         ];
 
-        $('#cloud').jQCloud(words);
+        $('#cloud').jQCloud(words,{
+            autoResize: true
+        });
     });
 
 </script>
@@ -247,12 +246,6 @@ height: 150px;
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<!-- Slimscroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
 
 </body>
 </html>
