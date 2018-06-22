@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <!-- jqcloud -->
-  <link rel="stylesheet" href="plugins/jQCloud/jqcloud.min.css">
+ 
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="dist/css/swiper.min.css">
   <!-- Morris chart -->
   <link rel="stylesheet" href="bower_components/morris.js/morris.css">
   <!-- jvectormap -->
@@ -29,7 +29,6 @@
   <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
 
   <![endif]-->
 
@@ -68,7 +67,9 @@ height: 50px;
   border-radius: 3px;
   background-color: #FFFFFF;
   padding: 0 1rem;
-  font-size: 12px;
+  font-size: 13px;
+  border-bottom: 1px solid #efefef;
+  padding:  0.5em;
 }
 
 .news_author{
@@ -80,8 +81,27 @@ height: 50px;
 
 .keyword{
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 20px;
   height: 30px;
+  text-shadow: :1px 1px 3px #666666;
+}
+
+.relation_word{
+  border-radius: 5px;
+  font-size: 12px;
+  color : #666 ;
+}
+    
+.swiper-container {
+      width: 100%;
+      padding-top: 5px;
+      padding-bottom: 50px;
+    }
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
 }
 </style>
 
@@ -111,51 +131,32 @@ height: 50px;
       <!--  <div class="box-header with-border bg-green-gradient">
           <h3 class="box-title">Naver</h3>
         </div>-->
-       <div class="keyword bg-green-gradient">&nbsp; 1. 폴란드 세네갈</div>
+       <div class="keyword bg-green-gradient">&nbsp; 1. 대구 수돗물</div>
         <!-- 연관검색어 -->
-        <div id="cloud"></div>
+        <div class="relation_word">대구 상수도,대구 수돗물 발암물질, 운문댐 저수율, 대구 수돗물 환경호르몬, 대구 물, 대구 수도, 대구수도사업소, 대구 발암물질, 수성구 수돗물, 대구 동구 수돗물 </div>
         <!-- /.box-header -->
-        <div class="box-body">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="item">
-                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F5172%2F2017%2F12%2F02%2F0000404185_001_20171202050243977.jpg&type=b360
-" alt="폴란드 세네갈">
+        <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F001%2F2016%2F01%2F04%2FC0A8CA3D00000151474EA5BF000D1039_P2_99_20160104180105.jpeg&type=b360
+)" onclick="javascript:imageDetail(this)"></div>
+      <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles11.naver.net%2FMjAxODAzMDhfNzAg%2FMDAxNTIwNDg2ODY5MDg0.iNZxOzikVOT9SIIQAXUH2OP3jH2doGgrzd7RpQSpjc8g.TRs9ZLSg5HbqvfQxzfcyfp8-1gQQpPE60X2P8q9ItxMg.JPEG.fly3363%2F%25C0%25CC%25C1%25F8%25C8%25C6_%25B4%25EB%25B1%25B8%25BD%25C3%25C0%25E5_%25C8%25C4%25BA%25B8.jpg&type=b360
+)"></div>
+      <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F5194%2F2018%2F04%2F22%2F0000066678_001_20180422090011690.jpg&type=b360
+)"></div>
+      <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F001%2F2017%2F12%2F30%2FPYH2017122920480005300_P2_20171230083046400.jpg&type=b360
+)"></div>
+      <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F5207%2F2018%2F02%2F08%2F0000204735_001_20180208092709620.jpg&type=b360
+)"></div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
 
-                <div class="carousel-caption">
-                  폴란드 세네갈
-                </div>
-              </div>
-              <div class="item active">
-                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F139%2F2018%2F04%2F15%2F0002089754_001_20180415212407095.jpg&type=b360
-" alt="폴란드 세네갈">
-
-                <div class="carousel-caption">
-                  폴란드 세네갈
-                </div>
-              </div>
-              <div class="item">
-                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F477%2F2017%2F11%2F12%2F0000098282_001_20171112185221600.jpg&type=b360
-" alt="폴란드 세네갈">
-
-                <div class="carousel-caption">
-                  폴란드 세네갈
-                </div>
-              </div>
-            </div>
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-              <span class="fa fa-angle-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-              <span class="fa fa-angle-right"></span>
-            </a>
-          </div>
-        </div>
+  <!-- Swiper JS -->
+  <script src="dist/js/swiper.min.js"></script>
+        
+        
         <!-- /.box-body -->
 
 
@@ -188,6 +189,15 @@ height: 50px;
               <!-- /news -->
             </div>
     </section>
+
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 0.0.0.1
+      </div>
+      <strong>Copyright &copy; 2018 akami.app All rights reserved.
+    </footer>
+  </div>
   </div>
 </div>
 
@@ -200,13 +210,7 @@ height: 50px;
 
       <!-- /.row (main row) -->
 
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 0.0.0.1
-    </div>
-    <strong>Copyright &copy; 2018 akami.app All rights reserved.
-  </footer>
+
 
 
 </div>
@@ -217,30 +221,29 @@ height: 50px;
 <!-- jQuery UI 1.11.4 -->
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script src ="plugins/jQCloud/jqcloud.min.js"></script>
+
 <script>
-    $.widget.bridge('uibutton', $.ui.button);
-
-    $(document).ready(function() {
-        var words = [
-            {text: "세네갈", weight: 1, link: 'https://m.search.naver.com/search.naver?query=세네갈'},
-            {text: "폴란드 세네갈", weight: 1.1},
-            {text: "레반도프스키", weight: 1},
-            {text: "한국 세네갈", weight: 1.1},
-            {text: "사디오 마네", weight: 1},
-            {text: "콜롬비아", weight: 1.1},
-            {text: "일본", weight: 1},
-            {text: "벨기에", weight: 1.1},
-            {text: "폴란드 위치", weight: 1},
-            {text: "폴란드 피파랭킹", weight: 1.1},
-            /* ... */
-        ];
-
-        $('#cloud').jQCloud(words,{
-            autoResize: true
-        });
+    //$.widget.bridge('uibutton', $.ui.button);
+var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows : true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
     });
 
+    function imageDetail(){
+       // alert(this.background-image);
+    }
 </script>
 
 <!-- Bootstrap 3.3.7 -->

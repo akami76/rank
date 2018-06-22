@@ -146,7 +146,7 @@ public class NaverRank extends Rank {
                 image.setPortal("NAVER");
                 image.setRankIndex(rankindex);
                 //image.setTitle();
-                image.setUrl(images.get(i).attr("data-source"));
+               // image.setUrl(images.get(i).attr("data-source"));
                 image.setType("NR");
                 //System.out.println(images.get(i).attr("data-source"));
                 imageRepository.save(image);
