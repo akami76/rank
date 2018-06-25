@@ -1,4 +1,4 @@
-package com.akami.app.rank.domain;
+package com.akami.app.rank.domain.json;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString
-public class News4Json implements Serializable {
+public class News4Json {
     private int dummy;
     private int rankIndex;
     private String portal;

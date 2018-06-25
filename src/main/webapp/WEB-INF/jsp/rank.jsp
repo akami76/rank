@@ -28,6 +28,10 @@
         height: 50px;
     }
 
+    a link{
+
+    }
+
     .news_box {
         -webkit-transform: translate(0, 0);
         -ms-transform: translate(0, 0);
@@ -104,18 +108,10 @@
 
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <!--<section class="content-header">
-          <h1>
-            Naver
-            <small>2018/06/21 13:56</small>
-          </h1>
-
-        </section>-->
+    <div class="content-wrapper" id="rankList">
 
         <!-- Main content -->
-        <section class="content" style="background-color: #ffffff">
+        <section class="content" style="background-color: #ffffff" >
             <!--  <div class="box-header with-border bg-green-gradient">
                 <h3 class="box-title">Naver</h3>
               </div>-->
@@ -141,16 +137,6 @@
                 <div class="swiper-pagination"></div>
             </div>
 
-            <!-- Swiper JS -->
-            <script src="dist/js/swiper.min.js"></script>
-
-
-            <!-- /.box-body -->
-
-
-            <!-- Left col -->
-            <!-- Custom tabs (Charts with tabs)-->
-            <!-- Conversations are loaded here -->
             <div class="news_box">
                 <!-- news -->
                 <div class="margin-bottom">
@@ -161,17 +147,6 @@
                     <div class="new_title" >[폴란드 세네갈]'게예 선제골' 세네갈, 폴란드에 1-0 리드(1보)</div>
                     <div class="news_description">
                         좌우 측면의 스피드를 앞세워 폴란드를 괴롭히던 세네갈은 전반 37분 선제골을 터트렸다. 니앙이 좌측에서 수비와의 경합에서 승리해 공을 잡아낸 후 전진해 마네에게 패스했고, 마네가 이를 곧바로 게예에게 연결했다....
-                    </div>
-                </div>
-                <!-- /news -->
-                <div class="margin-bottom">
-                    <div class="direct-chat-info clearfix">
-                        <span class="news_author">한국영농신문</span>
-                        <span class="direct-chat-timestamp pull-right">2018-06-20 00:48</span>
-                    </div>
-                    <div class="new_title">'득점왕' 레반도프스키, 골문 두드릴까… 득점률 57% 기록</div>
-                    <div class="news_description">
-                        Y사진=레반도프스키 SNS 폴란드의 에이스 로베르트 레반도프스키에 대한 관심이 높다. 레반도프스키는 20일 오전 0시부터 진행된 세네갈과의 경기에 선발 출전됐다. 이날 경기에 앞서 레반도프스키는 자신의 SNS를...
                     </div>
                 </div>
                 <!-- /news -->
@@ -210,33 +185,140 @@
 <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
-<script>
-    //$.widget.bridge('uibutton', $.ui.button);
-    var swiper = new Swiper('.swiper-container', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows : true,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
-
-    function imageDetail(){
-        // alert(this.background-image);
-    }
-</script>
-
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Swiper JS -->
+<script src="dist/js/swiper.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+
+        init();
+
+        function init(){
+            $.getJSON("/rankJson", function(data){
+                console.log("data.length : " + data.length);
+                var _keywordSet ;
+
+                $(data).each(
+                    function (){
+                        var _section ="<section class=\"content\" style=\"background-color: #ffffff\" >";
+                       // alert(this.searchWord);
+                        console.log("this.searchWord : " + this.searchWord);
+                       // for (var keyword in data) {
+                        _section += "<div class=\"keyword bg-green-gradient\">&nbsp; " + this.rankIndex + ". " + this.searchWord + "</div>";
+                        _section += "<div class=\"relation_word\">";
+
+                        //연관검색어
+                        $.each(this.relationWord, function(wordIndex, element) {
+                            _section += "<a href=\"#\">"+element+" </a>&nbsp;&nbsp;";
+                        })
+
+                        _section += "</div>";
+
+                        //images
+                        _section +="<div class=\"swiper-container\">";
+                        _section +="<div class=\"swiper-wrapper\">";
+                            $.each(this.imageList, function(index, images) {
+                                //if(this.rankIndex == 1)
+                                //_section += "<div class=\"swiper-slide\" style=\"background-image:url("+element.url +")\" onclick=\"javascript:imageDetail(this)\"></div>";
+                                _section += "<div class=\"swiper-slide\" style=\"background-image:url("+images.url +")\" ></div>";
+                            });
+
+                        _section +="</div>";
+                        _section +="<div class=\"swiper-pagination\"></div> </div>";
+
+                        <!-- Swiper -->
+
+                        _section +="<div class=\"news_box\">";
+                        _section +="<div >";
+                        _section +="<div class=\"direct-chat-info clearfix\">";
+
+                        $.each(this.newsList, function(index, news) {
+                            _section +="<span class=\"news_author\">"+news.author+"</span>";
+                            _section +="<span class=\"direct-chat-timestamp pull-right\">"+news.pubDate+"</span>";
+                            _section +="</div>";
+                            _section +="<div class=\"new_title\" >"+news.title+"</div>";
+                            _section +="<div class=\"news_description\">"+news.description+"</div>";
+
+                        });
+                        _section +="</div>";
+                        _section += "</section>";
+                        _keywordSet += _section;
+                    }
+                )
+                $('#rankList').html(_keywordSet);
+            })
+        }
+
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows : true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+    });
+
+
+
+
+
+</script>
 
 
 </body>
 </html>
+
+<section class="content" style="background-color: #ffffff" >
+    <!--  <div class="box-header with-border bg-green-gradient">
+        <h3 class="box-title">Naver</h3>
+      </div>-->
+    <div class="keyword bg-green-gradient">&nbsp; 1. 대구 수돗물</div>
+    <!-- 연관검색어 -->
+    <div class="relation_word">대구 상수도,대구 수돗물 발암물질, 운문댐 저수율, 대구 수돗물 환경호르몬, 대구 물, 대구 수도, 대구수도사업소, 대구 발암물질, 수성구 수돗물, 대구 동구 수돗물 </div>
+    <!-- /.box-header -->
+    <!-- Swiper -->
+    <div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F001%2F2016%2F01%2F04%2FC0A8CA3D00000151474EA5BF000D1039_P2_99_20160104180105.jpeg&type=b360
+)" onclick="javascript:imageDetail(this)"></div>
+        <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles11.naver.net%2FMjAxODAzMDhfNzAg%2FMDAxNTIwNDg2ODY5MDg0.iNZxOzikVOT9SIIQAXUH2OP3jH2doGgrzd7RpQSpjc8g.TRs9ZLSg5HbqvfQxzfcyfp8-1gQQpPE60X2P8q9ItxMg.JPEG.fly3363%2F%25C0%25CC%25C1%25F8%25C8%25C6_%25B4%25EB%25B1%25B8%25BD%25C3%25C0%25E5_%25C8%25C4%25BA%25B8.jpg&type=b360
+)"></div>
+        <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F5194%2F2018%2F04%2F22%2F0000066678_001_20180422090011690.jpg&type=b360
+)"></div>
+        <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F001%2F2017%2F12%2F30%2FPYH2017122920480005300_P2_20171230083046400.jpg&type=b360
+)"></div>
+        <div class="swiper-slide" style="background-image:url(https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F5207%2F2018%2F02%2F08%2F0000204735_001_20180208092709620.jpg&type=b360
+)"></div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+    <div class="news_box">
+        <!-- news -->
+        <div class="margin-bottom">
+            <div class="direct-chat-info clearfix">
+                <span class="news_author">스포츠투데이</span>
+                <span class="direct-chat-timestamp pull-right">2018-06-20 00:46</span>
+            </div>
+            <div class="new_title" >[폴란드 세네갈]'게예 선제골' 세네갈, 폴란드에 1-0 리드(1보)</div>
+            <div class="news_description">
+                좌우 측면의 스피드를 앞세워 폴란드를 괴롭히던 세네갈은 전반 37분 선제골을 터트렸다. 니앙이 좌측에서 수비와의 경합에서 승리해 공을 잡아낸 후 전진해 마네에게 패스했고, 마네가 이를 곧바로 게예에게 연결했다....
+            </div>
+        </div>
+        <!-- /news -->
+    </div>
+</section>

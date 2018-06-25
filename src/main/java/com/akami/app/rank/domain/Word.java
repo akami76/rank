@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,4 +38,6 @@ public class Word implements Serializable {
     public Word(){
 
     }
+
+
 }

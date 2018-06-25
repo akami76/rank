@@ -39,7 +39,7 @@ public class ImageTest extends Rank {
        // System.out.println(newsDoc);
         Elements images  = newsDoc.select("div.photo_grid img");
         //System.out.println("---------------------");
-        System.out.println(images);
+        //System.out.println(images);
 
         Image image;
 
@@ -68,5 +68,7 @@ public class ImageTest extends Rank {
             System.out.println(image);
         }
     }
+
+
 
 }

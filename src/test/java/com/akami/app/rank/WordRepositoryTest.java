@@ -24,7 +24,7 @@ public class WordRepositoryTest {
         Word word = new Word();
         for(int i = 0 ; i < 20 ; i++) {
             word.setRankIndex(i+1);
-            word.setRelationWord(i+1+"위 연관검색어");
+           // word.setRelationWord(i+1+"위 연관검색어");
             word.setSearchWord(i+1+"위 검색어");
             word.setType("NRW");
             word.setId(0);

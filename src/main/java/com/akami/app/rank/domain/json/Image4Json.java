@@ -1,4 +1,4 @@
-package com.akami.app.rank.domain;
+package com.akami.app.rank.domain.json;
 
 import lombok.Getter;
 import lombok.Setter;

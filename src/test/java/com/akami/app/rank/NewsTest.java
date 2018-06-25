@@ -30,7 +30,7 @@ public class NewsTest extends Rank {
     @Override
     public void setRankList() {
 
-        String keyword = "올림픽";
+        String keyword = "지드래곤";
 
         Document newsDoc = getDocument(NAVER_NEWS_RSS, keyword);
         //System.out.println("------------newsDoc---------");

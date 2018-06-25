@@ -26,7 +26,7 @@ public class NaverRank extends Rank {
     private String rankSearchUrl = "https://www.naver.com/index.html";
     private String realationSearchUrl = "https://search.naver.com/search.naver?query=";
     private final static String NAVER_NEWS_RSS = "http://newssearch.naver.com/search.naver?where=rss&query=";
-    private final static int NEWS_CNT = 5;
+    private static int NEWS_CNT = 5;
     private final static String PORTAL = "NAVER";
     private final static String TYPE = "REALTIME";
     private StringBuffer realationWord ;
@@ -89,6 +89,7 @@ public class NaverRank extends Rank {
             word.setPortal(PORTAL);
             word.setType(TYPE);
             word.setSearchWord(keyword);
+            //System.out.println("realationWord.toString() : "+realationWord.toString());
             word.setRelationWord(realationWord.toString());
             wordRepository.save(word);
 
@@ -96,14 +97,17 @@ public class NaverRank extends Rank {
             //System.out.println("STEP 2. News 주어 담기");
             Document newsDoc = getDocument(NAVER_NEWS_RSS, keyword);
             Elements newses  = newsDoc.select("item");
-            //System.out.println(items);
+            //System.out.println("*news count  : "+ newses.size());
 
             News news ;
+
+            if(NEWS_CNT > newses.size()) NEWS_CNT= newses.size();
 
             for(int i = 0 ; i < NEWS_CNT ; i++){
                 news = new News();
 
                 news.setTitle(newses.get(i).select("title").text());
+                //System.out.println(word.getSearchWord() + "      : Title : "+newses.get(i).select("title").text());
                 news.setLink(newses.get(i).select("link").text());
                 news.setDescription(newses.get(i).select("description").text());
                 SimpleDateFormat dateformat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
@@ -146,9 +150,9 @@ public class NaverRank extends Rank {
                 image.setPortal("NAVER");
                 image.setRankIndex(rankindex);
                 //image.setTitle();
-               // image.setUrl(images.get(i).attr("data-source"));
+                image.setUrl(images.get(i).attr("data-source"));
                 image.setType("NR");
-                //System.out.println(images.get(i).attr("data-source"));
+                //System.out.println("[===> ]"+images.get(i).attr("data-source"));
                 imageRepository.save(image);
             }
 
