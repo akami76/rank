@@ -26,12 +26,12 @@ public class NaverRank extends Rank {
     private String rankSearchUrl = "https://www.naver.com/index.html";
     private String realationSearchUrl = "https://search.naver.com/search.naver?query=";
     private final static String NAVER_NEWS_RSS = "http://newssearch.naver.com/search.naver?where=rss&query=";
-    private static int NEWS_CNT = 5;
+
     private final static String PORTAL = "NAVER";
     private final static String TYPE = "REALTIME";
     private StringBuffer realationWord ;
     private final static String NAVER_IMAGE = "https://m.search.naver.com/search.naver?where=m_image&query=";
-    private final static int IMAGE_CNT = 5;
+
 
     @Autowired
     ImageRepository imageRepository;
@@ -67,7 +67,8 @@ public class NaverRank extends Rank {
         //System.out.println("STEP 1. 실시간 검색어 담기");
         for (Element e : elements) {
             //System.out.println(rankindex +" : "+ e.html());
-
+            int NEWS_CNT = 5;
+            int IMAGE_CNT = 5;
             keyword = e.html();
 
             //STEP 2. 연관 검색어 주어 담기
@@ -143,6 +144,7 @@ public class NaverRank extends Rank {
                 //기존 이미지 삭제
                 imageRepository.deleteAll();
             }
+            if(IMAGE_CNT > images.size()) IMAGE_CNT= images.size();
 
             for(int i = 0 ; i < IMAGE_CNT ; i++){
                 image = new Image();
@@ -150,21 +152,13 @@ public class NaverRank extends Rank {
                 image.setPortal("NAVER");
                 image.setRankIndex(rankindex);
                 //image.setTitle();
+                //System.out.println("[===> ]"+images.get(i).attr("data-source"));
                 image.setUrl(images.get(i).attr("data-source"));
                 image.setType("NR");
-                //System.out.println("[===> ]"+images.get(i).attr("data-source"));
                 imageRepository.save(image);
             }
 
-
-
-
-
-
-
-            rankindex++;
-
-
+         rankindex++;
 
             if(rankindex  == 21) break;
         }

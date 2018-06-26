@@ -76,7 +76,7 @@ public class Word4Json implements Serializable {
     }
 
     public static String[] split(String text , String rex ) {
-        if (text == null) {
+        if (text == null || text.trim().length() == 0) {
             return null;
         }else{
             text = text.substring(0, text.length()-1);
