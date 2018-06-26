@@ -281,16 +281,18 @@
 
     $(document).ready(function() {
 
+
         init();
+        runImage();
        /* $("#dataBtn").click(function(){
            init();
         });*/
 
         function init(){
             $.getJSON("/rankJson", function(data){
-                console.log("data.length : " + data.length);
-                var _keywordSet ;
-                var _section ;
+               // console.log("data.length : " + data.length);
+                var _keywordSet = "" ;
+                var _section = "" ;
                 $(data).each(
                     function (){
                         _section = "<div class=\"keyword bg-green-gradient\">&nbsp; " + this.rankIndex + ". " + this.searchWord + "</div>";
@@ -308,29 +310,32 @@
                         _section += "</div>";
 
                         //images
-                        _section +="<div class=\"swiper-container\">";
-                        _section +="   <div class=\"swiper-wrapper\">";
+                      //  if(this.rankIndex == 1) {
+                            _section +="<div class=\"swiper-container\">";
+                            _section +="   <div class=\"swiper-wrapper\">";
+
                             $.each(this.imageList, function(index, images) {
                                 _section += "<div class=\"swiper-slide\"><img src ="+images.url +"></div>";
-                           });
+                            });
 
-                        _section +="</div>";
-                        _section +="<div class=\"swiper-pagination\"></div> </div>";
+                            _section +="</div>";
+                            _section +="<div class=\"swiper-pagination\"></div> </div>";
+                     //   }
+
 
                         <!-- Swiper -->
 
 
                         _section +="<div class=\"news_box\">";
                         $.each(this.newsList, function(index, news) {
-                            _section +="<div class=\"margin-bottom\">";
-                            _section +="<div class=\"news_title_box\">";
-                            _section +="<span class=\"news_author\">"+news.author+"</span>";
-                            _section +="<span class=\"pub_date\">"+news.pubDate+"</span>";
-                            _section +="</div>";
-                            _section +="<div class=\"new_title\" ><a href=\""+news.link+"\">"+news.title+"</a></div>";
-                            _section +="<div class=\"news_description\">"+news.description+"</div>";
-                            _section +="</div>";
-
+                                _section += "<div class=\"margin-bottom\">";
+                                _section += "<div class=\"news_title_box\">";
+                                _section += "<span class=\"news_author\">" + news.author + "</span>";
+                                _section += "<span class=\"pub_date\">" + news.pubDate + "</span>";
+                                _section += "</div>";
+                                _section += "<div class=\"new_title\" ><a href=\"" + news.link + "\">" + news.title + "</a></div>";
+                                _section += "<div class=\"news_description\">" + news.description + "</div>";
+                                _section += "</div>";
                         });
                         _section +="</div>";
                         _keywordSet += _section;
@@ -340,19 +345,23 @@
             })
         }
 
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            keyboard: {
-                enabled: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            }
-        });
+        function runImage(){
+            var swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                keyboard: {
+                    enabled: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                }
+            });
+        }
+
 
     });
+
 
 
 

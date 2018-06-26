@@ -67,7 +67,7 @@ public class NaverRank extends Rank {
         //System.out.println("STEP 1. 실시간 검색어 담기");
         for (Element e : elements) {
             //System.out.println(rankindex +" : "+ e.html());
-            int NEWS_CNT = 5;
+            int NEWS_CNT = 3;
             int IMAGE_CNT = 5;
             keyword = e.html();
 
