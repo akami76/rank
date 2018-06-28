@@ -106,25 +106,16 @@ public class NaverRank extends Rank {
 
             for(int i = 0 ; i < NEWS_CNT ; i++){
                 news = new News();
-
-                news.setTitle(newses.get(i).select("title").text());
-                //System.out.println(word.getSearchWord() + "      : Title : "+newses.get(i).select("title").text());
-                news.setLink(newses.get(i).select("link").text());
-                news.setDescription(newses.get(i).select("description").text());
-                SimpleDateFormat dateformat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
-                try {
-                    Date pubDate = dateformat.parse(newses.get(i).select("pubDate").text());
-                    Timestamp timestamp = new java.sql.Timestamp(pubDate.getTime());
-                    news.setPubDate(timestamp);
-                } catch (ParseException ee) {
-                    ee.printStackTrace();
-                }
-                news.setAuthor(newses.get(i).select("author").text());
+                news.setTitle(newses.get(i).select("div.news_tit").text());
+                news.setLink(newses.get(i).select("a").attr("href"));
+                news.setDescription(newses.get(i).select("div.dsc_wrap .api_txt_lines").text());
+                news.setPubDate(newses.get(i).select(".sub_txt").text());
+                news.setAuthor(newses.get(i).select("cite").text());
                 news.setKeyword(keyword);
-                news.setPortal(PORTAL);
-                news.setRankIndex(rankindex);
-                news.setThumbnail(newses.get(i).select("media").attr("url"));
-                news.setCategory(newses.get(i).select("category").text());
+                news.setPortal("NAVER");
+                news.setRankIndex(1);
+                news.setThumbnail(newses.get(i).select(".dsc_thumb img").attr("src"));
+                //news.setCategory(items.get(i).select("category").text());
                 news.setRegDate(new Timestamp(System.currentTimeMillis()));
                 //System.out.println(news.toString());
                 newsRepository.save(news);

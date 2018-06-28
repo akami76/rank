@@ -19,9 +19,9 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class NewsTest extends Rank {
-    private final static String NAVER_NEWS_RSS = "http://newssearch.naver.com/search.naver?where=rss&query=";
-    private final static int NEWS_CNT = 5;
+public class NewsOrgTest extends Rank {
+    private final static String NAVER_NEWS_ORG = "https://m.search.naver.com/search.naver?query=";
+    private  static int NEWS_CNT = 5;
 
     @Autowired
     NewsRepository newsRepository;
@@ -30,16 +30,25 @@ public class NewsTest extends Rank {
     @Override
     public void setRankList() {
 
-        String keyword = "지드래곤";
+        String keyword = "이태임";
 
-        Document newsDoc = getDocument(NAVER_NEWS_RSS, keyword);
-        //System.out.println("------------newsDoc---------");
+        Document newsDoc = getDocument(NAVER_NEWS_ORG, keyword);
+        System.out.println("------------newsDoc---------");
         //System.out.println(newsDoc);
-        Elements items  = newsDoc.select("item");
-        //System.out.println("---------------------");
+        Elements items  = newsDoc.select(".list_news li.bx");
+        //System.out.println("-------------news list--------");
         //System.out.println(items);
-
+        if(NEWS_CNT > items.size()) NEWS_CNT= items.size();
         News news ;
+        for(int i = 0 ; i < NEWS_CNT ; i++){
+            System.out.println(i+" : -------------news --------");
+            System.out.println("Title : "+items.get(i).select("div.news_tit").text());
+            System.out.println("Link : "+items.get(i).select("a").attr("href"));
+            System.out.println("description : "+items.get(i).select("div.dsc_wrap .api_txt_lines").text());
+            System.out.println("author : "+items.get(i).select("cite").text());
+            System.out.println("pub_date : "+items.get(i).select(".sub_txt").text());
+            System.out.println("dsc_thumb : "+items.get(i).select(".dsc_thumb img").attr("src"));
+        }
 
         for(int i = 0 ; i < NEWS_CNT ; i++){
             news = new News();
@@ -55,10 +64,10 @@ public class NewsTest extends Rank {
             //news.setCategory(items.get(i).select("category").text());
             news.setRegDate(new Timestamp(System.currentTimeMillis()));
             //System.out.println(news.toString());
-            //newsRepository.save(news);
-            System.out.println(news.toString());
-           // newsRepository.save(news);
+            newsRepository.save(news);
         }
+
+
 
 /**
  * <item>
