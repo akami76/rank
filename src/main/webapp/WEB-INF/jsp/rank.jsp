@@ -23,13 +23,15 @@
     <!-- Google Font -->
 </head>
 <style>
-    #cloud {
-        width: 100%;
-        height: 50px;
+
+
+    .relation_word a {
+        text-decoration: none;
+        color: #ffff;
     }
-
-    a link{
-
+    .keyword a {
+        text-decoration: none;
+        color: #ffff;
     }
 
     .news_box {
@@ -139,105 +141,7 @@
 
         <!-- Main content -->
         <section class="content" style="background-color: #222d32" id="rankList">
-            <!--  <div class="box-header with-border bg-green-gradient">
-                <h3 class="box-title">Naver</h3>
-              </div>-->
-            <div class="keyword bg-green-gradient">&nbsp; 1. 대구 수돗물</div>
-            <!-- 연관검색어 -->
-            <div class="relation_word">대구 상수도,대구 수돗물 발암물질, 운문댐 저수율, 대구 수돗물 환경호르몬, 대구 물, 대구 수도, 대구수도사업소, 대구 발암물질, 수성구 수돗물, 대구 동구 수돗물 </div>
-            <!-- /.box-header -->
-            <!-- Swiper -->
-            <!-- Swiper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">Slide 1</div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <div class="swiper-slide">Slide 4</div>
-                    <div class="swiper-slide">Slide 5</div>
-                    <div class="swiper-slide">Slide 6</div>
-                    <div class="swiper-slide">Slide 7</div>
-                    <div class="swiper-slide">Slide 8</div>
-                    <div class="swiper-slide">Slide 9</div>
-                    <div class="swiper-slide">Slide 10</div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-            <!-- Swiper -->
-
-
-            <div class="news_box">
-                <!-- news -->
-                <div class="margin-bottom">
-                    <div class="news_title_box">
-                        <span class="news_author">스포츠투데이</span>
-                        <span class="pub_date">2018-06-20 00:46</span>
-                    </div>
-                    <div class="new_title" >[폴란드 세네갈]'게예 선제골' 세네갈, 폴란드에 1-0 리드(1보)</div>
-                    <div class="news_description">
-                        좌우 측면의 스피드를 앞세워 폴란드를 괴롭히던 세네갈은 전반 37분 선제골을 터트렸다. 니앙이 좌측에서 수비와의 경합에서 승리해 공을 잡아낸 후 전진해 마네에게 패스했고, 마네가 이를 곧바로 게예에게 연결했다....
-                    </div>
-                </div>
-                <div class="news_title_box">
-                    <span class="news_author">스포츠투데이</span>
-                    <span class="pub_date">2018-06-20 00:46</span>
-                </div>
-                <div class="new_title" >[폴란드 세네갈]'게예 선제골' 세네갈, 폴란드에 1-0 리드(1보)</div>
-                <div class="news_description">
-                    좌우 측면의 스피드를 앞세워 폴란드를 괴롭히던 세네갈은 전반 37분 선제골을 터트렸다. 니앙이 좌측에서 수비와의 경합에서 승리해 공을 잡아낸 후 전진해 마네에게 패스했고, 마네가 이를 곧바로 게예에게 연결했다....
-                </div>
-            </div>
-            <!-- /news -->
-
-
-            <div class="keyword bg-green-gradient">&nbsp; 2. 대구 수돗물</div>
-            <!-- 연관검색어 -->
-            <div class="relation_word">대구 상수도,대구 수돗물 발암물질, 운문댐 저수율, 대구 수돗물 환경호르몬, 대구 물, 대구 수도, 대구수도사업소, 대구 발암물질, 수성구 수돗물, 대구 동구 수돗물 </div>
-            <!-- /.box-header -->
-            <!-- Swiper -->
-            <!-- Swiper -->
-            <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F001%2F2009%2F03%2F09%2FPYH2009030900040099000_P2.jpg&amp;type=b360"></div>
-                        <div class="swiper-slide"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2FMjAxODAzMjRfNTIg%2FMDAxNTIxODQwMDkzNTQ2.S1RaeK3B_tU924Fdq_0mbAWvBe7xwZPYKKaYy13Abi4g.4kIWgG9F90u2ldMtphxsLrLTU72hYFHNx0W4MsQAL7wg.PNG%2FI_qiFX_Asolk2eREG_cYt-ZzGcEU.jpg&amp;type=b360"></div>
-                        <div class="swiper-slide"><img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fpost-phinf.pstatic.net%2FMjAxODAzMDlfMjcg%2FMDAxNTIwNTY1MzI4MjIx.ENOZGuE65WxQdZfmmIRoidy8L4EAW1EXoP8cxAwsL3Mg.OadS7QEwGZ0x3qjxzRg3sVSx6e3kyGnOzq6oM0sO83wg.JPEG%2FI13bpyuGPkGvfUZKP1__sWP6GKEY.jpg&amp;type=b360"></div>
-                        <div class="swiper-slide"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F009%2F2009%2F03%2F07%2F0090002076970_0.jpg&amp;type=b360"></div>
-                        <div class="swiper-slide"><img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F5469%2F2017%2F12%2F26%2F0000020621_001_20171226091204731.jpg&amp;type=b360"></div>
-                    </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- Add Arrows -->
-            </div>
-            <!-- Swiper -->
-
-
-            <div class="news_box">
-                <!-- news -->
-                <div class="margin-bottom">
-                    <div class="news_title_box">
-                        <span class="news_author">스포츠투데이</span>
-                        <span class="pub_date">2018-06-20 00:46</span>
-                    </div>
-                    <div class="new_title" >[폴란드 세네갈]'게예 선제골' 세네갈, 폴란드에 1-0 리드(1보)</div>
-                    <div class="news_description">
-                        좌우 측면의 스피드를 앞세워 폴란드를 괴롭히던 세네갈은 전반 37분 선제골을 터트렸다. 니앙이 좌측에서 수비와의 경합에서 승리해 공을 잡아낸 후 전진해 마네에게 패스했고, 마네가 이를 곧바로 게예에게 연결했다....
-                    </div>
-                </div>
-                <div class="margin-bottom">
-                    <div class="news_title_box">
-                        <span class="news_author">스포츠투데이</span>
-                        <span class="pub_date">2018-06-20 00:46</span>
-                    </div>
-                    <div class="new_title" >[폴란드 세네갈]'게예 선제골' 세네갈, 폴란드에 1-0 리드(1보)</div>
-                    <div class="news_description">
-                        좌우 측면의 스피드를 앞세워 폴란드를 괴롭히던 세네갈은 전반 37분 선제골을 터트렸다. 니앙이 좌측에서 수비와의 경합에서 승리해 공을 잡아낸 후 전진해 마네에게 패스했고, 마네가 이를 곧바로 게예에게 연결했다....
-                    </div>
-                </div>
-            </div>
+            Data Loading....
             <!-- /news -->
         </section>
 
@@ -295,7 +199,7 @@
                 var _section = "" ;
                 $(data).each(
                     function (){
-                        _section = "<div class=\"keyword bg-green-gradient\">&nbsp; " + this.rankIndex + ". " + this.searchWord + "</div>";
+                        _section = "<div class=\"keyword bg-green-gradient\"><a href='https://m.search.naver.com/search.naver?query="+this.searchWord+"' target='_blank'>&nbsp; " + this.rankIndex + ". " + this.searchWord + "</a></div>";
                        // alert(this.searchWord);
                         //console.log("this.searchWord : " + this.searchWord);
                        // for (var keyword in data) {
@@ -342,6 +246,19 @@
                     }
                 )
                 $('#rankList').html(_keywordSet);
+
+                var swiper = new Swiper('.swiper-container', {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    keyboard: {
+                        enabled: true,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    }
+                });
+
             })
         }
 

@@ -25,12 +25,13 @@ public class NaverRank extends Rank {
 
     private String rankSearchUrl = "https://www.naver.com/index.html";
     private String realationSearchUrl = "https://search.naver.com/search.naver?query=";
-    private final static String NAVER_NEWS_RSS = "http://newssearch.naver.com/search.naver?where=rss&query=";
+    //private final static String NAVER_NEWS_RSS = "http://newssearch.naver.com/search.naver?where=rss&query=";
+    private final static String NAVER_NEWS_ORG = "https://m.search.naver.com/search.naver?query=";
 
     private final static String PORTAL = "NAVER";
     private final static String TYPE = "REALTIME";
     private StringBuffer realationWord ;
-    private final static String NAVER_IMAGE = "https://m.search.naver.com/search.naver?where=m_image&query=";
+    private final static String NAVER_IMAGE = "https://m.search.naver.com/search.naver?where=m_image&mode=default&sm=mtb_srt&sort=1&query=";
 
 
     @Autowired
@@ -68,7 +69,7 @@ public class NaverRank extends Rank {
         for (Element e : elements) {
             //System.out.println(rankindex +" : "+ e.html());
             int NEWS_CNT = 3;
-            int IMAGE_CNT = 5;
+            int IMAGE_CNT = 10;
             keyword = e.html();
 
             //STEP 2. 연관 검색어 주어 담기
@@ -96,8 +97,8 @@ public class NaverRank extends Rank {
 
             //STEP 3. News 주어 담기
             //System.out.println("STEP 2. News 주어 담기");
-            Document newsDoc = getDocument(NAVER_NEWS_RSS, keyword);
-            Elements newses  = newsDoc.select("item");
+            Document newsDoc = getDocument(NAVER_NEWS_ORG, keyword);
+            Elements newses  = newsDoc.select(".list_news li.bx");
             //System.out.println("*news count  : "+ newses.size());
 
             News news ;
@@ -113,7 +114,7 @@ public class NaverRank extends Rank {
                 news.setAuthor(newses.get(i).select("cite").text());
                 news.setKeyword(keyword);
                 news.setPortal("NAVER");
-                news.setRankIndex(1);
+                news.setRankIndex(word.getRankIndex());
                 news.setThumbnail(newses.get(i).select(".dsc_thumb img").attr("src"));
                 //news.setCategory(items.get(i).select("category").text());
                 news.setRegDate(new Timestamp(System.currentTimeMillis()));

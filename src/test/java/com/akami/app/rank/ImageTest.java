@@ -22,7 +22,7 @@ import java.util.Date;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ImageTest extends Rank {
-    private final static String NAVER_IMAGE = "https://m.search.naver.com/search.naver?where=m_image&query=";
+    private final static String NAVER_IMAGE = "https://m.search.naver.com/search.naver?where=m_image&mode=default&sm=mtb_srt&sort=1&query=";
     private final static int IMAGE_CNT = 5;
 
     @Autowired

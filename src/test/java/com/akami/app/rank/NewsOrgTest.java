@@ -30,7 +30,7 @@ public class NewsOrgTest extends Rank {
     @Override
     public void setRankList() {
 
-        String keyword = "이태임";
+        String keyword = "병풀추출물";
 
         Document newsDoc = getDocument(NAVER_NEWS_ORG, keyword);
         System.out.println("------------newsDoc---------");

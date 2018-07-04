@@ -46,13 +46,13 @@ public class Word4Json implements Serializable {
         for(News newsPaper : news){
             if(this.getRankIndex() == newsPaper.getRankIndex()){
                 newsList.add(newsPaper);
-                System.out.println(this.getRankIndex() + " : OK !~" );
+                //System.out.println(this.getRankIndex() + " : OK !~" );
             }
         }
         for(Image image : images){
             if(this.getRankIndex() == image.getRankIndex()){
                 imageList.add(image);
-                System.out.println(this.getRankIndex() + " : OK !~" );
+                //System.out.println(this.getRankIndex() + " : OK !~" );
             }
         }
 
@@ -68,7 +68,7 @@ public class Word4Json implements Serializable {
         for(News newsPaper : news){
             if(index == newsPaper.getRankIndex()){
                 listNews.add(newsPaper);
-                System.out.println(index + " : OK !~" );
+                //System.out.println(index + " : OK !~" );
             }
 
         }
